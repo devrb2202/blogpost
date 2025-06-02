@@ -38,7 +38,6 @@
 
 
 <script setup>
-import { computed } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { smAndDown } = useDisplay()
