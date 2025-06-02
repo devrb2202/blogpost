@@ -1,0 +1,20 @@
+Project Blog Post with Nuxt and Supabase
+
+Front end
+- Building landing page
+- About page
+- Projects page
+- Contact page
+- Implement basic UI Design
+
+Front end / Backend UI
+- Create Textareas for Blog post display at frontend
+- Apply CRUD Operation
+
+Testing
+
+
+Backend Side
+- Create Table on Supabase
+- Create SignUp and SignIn auth
+- Insert Blog Text
