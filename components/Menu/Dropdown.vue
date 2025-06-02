@@ -5,19 +5,19 @@
           color="transparent"
           v-bind="props"
           prepend-icon="mdi-menu"
-          stacked
-         :ripple="false"
          variant="flat"
          class="d-flex d-sm-none"
+         :ripple="false"
+         stacked
         >
         
         </v-btn>
       </template>
       <v-list>
         <v-list-item
-          v-for="(item, index) in items"
+          v-for="(item, index) in route"
           :key="index"
-          :value="index"
+          :value="item.title"
           :to="item.to"
         >
           <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -29,11 +29,15 @@
 
 
 <script setup>
-const items = ref([
-        { title: 'Home' , to: '/'},
-        { title: 'About', to: '/about' },
-        { title: 'Projects', to: '/projects' },
-        { title: 'Contact', to: '/contact' },
-      ])
+// const items = ref([
+//         { title: 'Home' , to: '/'},
+//         { title: 'About', to: '/about' },
+//         { title: 'Projects', to: '/projects' },
+//         { title: 'Contact', to: '/contact' },
+//       ])
+
+defineProps({
+    route: Array
+})
 
 </script>
