@@ -1,29 +1,48 @@
 <template>
     <ContainerForm>
         <template #center>
+            <ErrorHandler :error="format" v-if="error1" :color="color"/>
             <AuthForm :model="userAuth" />
-            <AuthButton title="Reset Password" color="red"/>
+            <AuthButton title="Reset Password" color="red" @click="reset"/>
         </template>
     </ContainerForm>
-     <!-- <v-container>
-        <v-row class="justify-center mb-5 mt-5">
-             <v-col cols="12" sm="4" class="bg-grey-lighten-3 pa-10">
-                <AuthForm :model="userAuth" />
-                <AuthButton title="Reset Password" color="red"/>
-             </v-col>
-        </v-row>   
-    </v-container> -->
+   
 </template>
 
 
 <script setup>
+
+const supabase = useSupabase()
+
 const email = ref('')
+const format = ref('')
+const error1 = ref(false)
+const color = ref('')
 
 
 const userAuth = ref([
-    {label: 'Email', placeholder: 'Enter your email', icon: 'mdi-email', type: 'text', model: email.value},
-    
+    {label: 'Email', placeholder: 'Enter your email', icon: 'mdi-email', type: 'text', model: email},
 ])
+async function reset() {
+    
+    try {
+        const { data, error } = await supabase.auth.resetPasswordForEmail(email.value)
+        if(error){
+            format.value = error.message
+            error1.value = true
+            console.log(error)
+        }
+        else{
+            format.value = "If this email exists, we've sent a recovery link"
+            color.value = 'green'
+            // error1.value = false
+        }
+    }
+    catch(e){
+        console.log('Unexpected',e)
+    }
+
+}
 
 definePageMeta({
     layout: 'admin'
