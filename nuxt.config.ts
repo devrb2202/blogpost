@@ -20,7 +20,7 @@ export default defineNuxtConfig({
       })
     },
     //...
-    //'@nuxtjs/supabase'
+    // '@nuxtjs/supabase'
   ],
   vite: {
     vue: {
