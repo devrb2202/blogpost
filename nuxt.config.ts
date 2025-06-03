@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
+     
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -20,7 +21,6 @@ export default defineNuxtConfig({
       })
     },
     //...
-    // '@nuxtjs/supabase'
   ],
   vite: {
     vue: {
@@ -31,8 +31,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      supabaseUrl: process.env.SUPABASE_URL || '',
-      supabaseAnonKey: process.env.SUPABASE_ANON_KEY || '',
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
     },
   },
+   
 })

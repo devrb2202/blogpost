@@ -5,9 +5,10 @@ export const useSupabase = () => {
   const config = useRuntimeConfig()
 
   const supabase = createClient(
-    config.public.supabaseUrl,
-    config.public.supabaseAnonKey
+    config.public.supabaseUrl as string,
+    config.public.supabaseAnonKey as string
   )
 
   return supabase
 }
+  

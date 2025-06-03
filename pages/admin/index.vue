@@ -24,8 +24,12 @@ const userAuth = ref([
 ])
 
 definePageMeta({
-    layout: 'admin'
+    layout: 'admin',
 })
+// definePageMeta({
+//   middleware: 'auth'
+// })
+
 
 async function signIn() {
     loading.value = true
