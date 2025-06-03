@@ -7,6 +7,8 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   //...
+  compatibilityDate: '2025-05-15',
+  devtools: { enabled: true },
   build: {
     transpile: ['vuetify'],
   },
@@ -18,6 +20,7 @@ export default defineNuxtConfig({
       })
     },
     //...
+    //'@nuxtjs/supabase'
   ],
   vite: {
     vue: {
@@ -28,8 +31,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      supabaseUrl: process.env.SUPABASE_URL ?? '',
-      supabaseAnonKey: process.env.SUPABASE_ANON_KEY ?? '',
+      supabaseUrl: process.env.SUPABASE_URL as string,
+      supabaseAnonKey: process.env.SUPABASE_ANON_KEY as string,
     },
   },
 })
