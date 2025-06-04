@@ -1,7 +1,7 @@
 <template>
     <v-container fluid class="bg-grey-lighten-2">
         <v-row no-gutters class="justify-center pa-4">
-            <h1 class="text-h1 mb-5">Blog Title</h1>
+            <h1 class="text-h2 mb-5">Dojo Tech</h1>
             <v-divider></v-divider>
             <v-container class="pa-4 d-flex justify-center">
                 <MenuDropdown :route="route" />
@@ -18,18 +18,6 @@
                             :title="user ? 'Back to Dashboard' : 'Login'"
                             :to="user ? '/login/directory' : '/login'"
                         />
-                         <!-- <TextLink 
-                            v-if="user"
-                            title="Back to Dashboard"
-                            to="/login/directory"
-                        />
-                         <TextLink 
-                            v-else
-                            title="Login"
-                            to="/login"
-                        /> -->
-
-
                     </v-row>
                 </v-col>
             </v-container>
