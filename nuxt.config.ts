@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
-     
+     '@nuxtjs/supabase',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -22,6 +22,15 @@ export default defineNuxtConfig({
     },
     //...
   ],
+   supabase: {
+    redirect: false, // Enable redirects
+    redirectOptions: {
+      login: '/', // Baguhin ito sa gusto mong default route
+      callback: '/confirm',
+      exclude: ['/login', '/public*'], // I-exclude ang /login kung ayaw mong ma-redirect dito
+      saveRedirectToCookie: false
+    }
+  },
   vite: {
     vue: {
       template: {
@@ -32,8 +41,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       supabaseUrl: process.env.SUPABASE_URL,
-      supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+      supabaseAnonKey: process.env.SUPABASE_KEY,
     },
   },
-   
+  
 })

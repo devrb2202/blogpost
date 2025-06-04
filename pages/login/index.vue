@@ -2,6 +2,7 @@
      <ContainerForm>
         <template #center>
             <LoadingEffects :active="loading" :indeterminate="loading"/>
+            <ErrorHandler :error="logger" v-if="isInvalid"/>
             <AuthForm :model="userAuth" />
             <AuthButton title="Sign In" @click="signIn"/>
         </template>
@@ -11,12 +12,15 @@
 
 <script setup>
 
-const supabase = useSupabase()
+const supabase = useSupabaseClient()
+// const router = useRouter()
+const user = useSupabaseUser()
 
 const loading = ref(false)
 const email = ref('')
 const password = ref('')
 const logger = ref('')
+const isInvalid = ref(false)
 
 const userAuth = ref([
     {label: 'Email', placeholder: 'Enter your email', icon: 'mdi-email', type: 'text', model: email},
@@ -25,10 +29,8 @@ const userAuth = ref([
 
 definePageMeta({
     layout: 'admin',
+    middleware: ['directory']
 })
-// definePageMeta({
-//   middleware: 'auth'
-// })
 
 
 async function signIn() {
@@ -38,12 +40,15 @@ async function signIn() {
             email: email.value,
             password: password.value
         })
+        if (user.value) {
+            isInvalid.value = false
+            setTimeout(() => {loading.value = false},3000)
+            navigateTo('/login/directory')
+        }
         if(error) {
             console.log('Problem is ', error)
-        }
-        else {
-            console.log(logger.value = data)
-            setTimeout(() => {loading.value = false}, 3000)
+            isInvalid.value = true
+            logger.value = error.message
         }
     }
     catch(e) {
@@ -54,5 +59,6 @@ async function signIn() {
     }
    
 }
+
 
 </script>

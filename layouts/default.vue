@@ -12,6 +12,22 @@
                             :to="x.to" 
                             :title="x.title"
                         />
+                        <TextLink
+                            :title="user ? 'Back to Dashboard' : 'Login'"
+                            :to="user ? '/login/directory' : '/login'"
+                        />
+                         <!-- <TextLink 
+                            v-if="user"
+                            title="Back to Dashboard"
+                            to="/login/directory"
+                        />
+                         <TextLink 
+                            v-else
+                            title="Login"
+                            to="/login"
+                        /> -->
+
+
                     </v-row>
                 </v-col>
             </v-container>
@@ -24,12 +40,17 @@
 </template>
 
 <script setup>
+
+const user = useSupabaseUser()
+
 const route = ref([
     {to: '/', title: 'Home'},
     {to: '/about', title: 'About'},
     {to: '/projects', title: 'Projects'},
     {to: '/contact', title: 'Contact'},
+    // {to: '/login', title: 'Login'},
 ])
+
 
 </script>
 

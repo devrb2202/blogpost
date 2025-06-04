@@ -12,7 +12,7 @@
 
 <script setup>
 
-const supabase = useSupabase()
+const supabase = useSupabaseClient()
 
 const email = ref('')
 const format = ref('')

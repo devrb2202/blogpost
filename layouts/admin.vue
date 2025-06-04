@@ -25,8 +25,9 @@
 
 <script setup>
 const route = ref([
-    {to: '/admin', title: 'Sign In'},
-    {to: '/admin/resetpassword', title: 'Reset Password'},
+    {to: '/', title: 'Homepage'},
+    {to: '/login', title: 'Sign In'},
+    {to: '/login/resetpassword', title: 'Reset Password'},
 ])
 
 </script>
