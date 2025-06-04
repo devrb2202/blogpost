@@ -1,7 +1,12 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer">
+    <v-navigation-drawer v-model="drawer" width="300">
       <!--  -->
+      <MenuSideNav>
+        <template #logout>
+            <v-btn color="black" @click="logout" block>logout</v-btn>
+        </template>
+      </MenuSideNav>
        
     </v-navigation-drawer>
 
@@ -21,6 +26,21 @@
 
 const drawer = ref(null)
 
+
+const user = useSupabaseUser()
+const supabase = useSupabaseClient()
+
+
+async function logout() {
+    const { error } = await supabase.auth.signOut()
+
+    if(error){
+        alert(error)
+    }
+    else{
+        navigateTo('/login')
+    }
+}
 
 </script>
 

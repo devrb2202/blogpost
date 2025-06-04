@@ -4,7 +4,9 @@
             <h1 class="text-h1 mb-5">Blog Title</h1>
             <v-divider></v-divider>
             <v-container class="pa-4 d-flex justify-center">
-                <MenuDropdown :route="route"/>
+                <MenuDropdown :route="route" />
+            
+                <TextLink  title=""/>
                 <v-col cols="12">      
                     <v-row class="justify-center">
                         <TextLink v-for="(x, index) in route" 
@@ -48,8 +50,10 @@ const route = ref([
     {to: '/about', title: 'About'},
     {to: '/projects', title: 'Projects'},
     {to: '/contact', title: 'Contact'},
-    // {to: '/login', title: 'Login'},
+    // {to: '/login/directory', title: 'Back to Dashboard'},
 ])
+
+
 
 
 </script>
