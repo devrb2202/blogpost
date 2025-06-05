@@ -24,7 +24,7 @@
            <v-divider></v-divider>
         </v-row>
     </v-container>
-    <v-container>
+    <v-container class="bg-grey-lighten-3" fluid>
         <slot />
     </v-container>
 </template>

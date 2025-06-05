@@ -1,0 +1,10 @@
+<template>
+    <v-img
+        :width="20"
+        :height="40"
+        aspect-ratio="1/1"
+        cover
+        src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+    >
+    </v-img>
+</template>
