@@ -1,10 +1,10 @@
-
 <template>
    <div v-if="pending" class="loading-overlay h-screen d-flex align-center justify-center">
     Loading...
   </div>    
   <ContainerItem v-else>
     <template #item>
+    
       <CardItem
         v-for="(x, index) in data" 
         :key="index"
@@ -12,6 +12,7 @@
         :content="x.description"
         :source="x.image"
         :price="x.price"
+        :to="`/products/${x.id}`" 
       >
         <template #carousel>
           <CardCarousel />
@@ -21,6 +22,7 @@
           <p>Sold: ({{ x.purchase }})</p>
         </template>
       </CardItem>
+  
     </template>
   </ContainerItem>
 </template>
@@ -36,3 +38,7 @@ const avatarSize = computed(() => {
   return smAndDown.value ? 200 : 400
 })
 </script>
+
+
+
+   
