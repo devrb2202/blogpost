@@ -1,3 +1,4 @@
+<!-- Main Page / -->
 <template>
    <div v-if="pending" class="loading-overlay h-screen d-flex align-center justify-center">
     Loading...
@@ -34,9 +35,14 @@ const { smAndDown } = useDisplay()
 
 const { pending, data, refresh } = useAsyncData('posts', () => $fetch('/api/posts'))
 
+
 const avatarSize = computed(() => {
   return smAndDown.value ? 200 : 400
 })
+useHead({
+   title: "Home Page - Ken Thotan",    
+})
+
 </script>
 
 
